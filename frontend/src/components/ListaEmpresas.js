@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
+import ModalDetalhes from "./ModalDetalhes";
+import ModalEditar from "./ModalEditar";
 
 function ListaEmpresas() {
   const [empresas, setEmpresas] = useState([]);
+  const [isDetalsOpen, setIsDetalsOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [empresa, setEmpresa] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/empresas", {
+    console.log("Empresa", empresa);
+  }, [empresa]);
+
+  useEffect(() => {
+    fetch("http://localhost:4001/empresas", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -32,13 +41,45 @@ function ListaEmpresas() {
             <td>{empresa.nome}</td>
             <td>{`${empresa.rua}, ${empresa.numero} - ${empresa.bairro}, ${empresa.cidade} - ${empresa.estado}`}</td>
             <td>
-              <button>Detalhes</button>
-              <button>Editar</button>
+              <button
+                onClick={() => {
+                  setEmpresa(empresa);
+                  setIsDetalsOpen(true);
+                }}
+              >
+                Detalhes
+              </button>
+              <button
+                onClick={() => {
+                  setEmpresa(empresa);
+                  setIsEditOpen(true);
+                }}
+              >
+                Editar
+              </button>
               <button>Excluir</button>
             </td>
           </tr>
         ))}
       </tbody>
+      {
+        <>
+          <ModalDetalhes
+            isOpen={isDetalsOpen}
+            onRequestClose={() => {
+              setIsDetalsOpen(false);
+            }}
+            empresa={empresa}
+          />
+          <ModalEditar
+            isOpen={isEditOpen}
+            empresa={empresa}
+            onClose={() => {
+              setIsEditOpen(false);
+            }}
+          />
+        </>
+      }
     </table>
   );
 }
