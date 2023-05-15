@@ -13,7 +13,7 @@ app.use(cors(corsOptions)); // Adicionando o middleware cors com opções
 app.use("/empresas", empresasRouter);
 
 sequelize.sync().then(() => {
-  app.listen(5000, () => {
-    console.log("Servidor iniciado na porta 5000");
+  app.listen(4001, () => {
+    console.log("Servidor iniciado na porta 4001");
   });
 });
