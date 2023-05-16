@@ -1,6 +1,6 @@
-Plataforma de avaliação de empresa
+Plataforma de Cadastro de Empresas
 
-Este projeto consiste em uma plataforma de avaliação de empresas. A aplicação é composta por uma API back-end para cadastro de empresas e um front-end para interação com o usuário.
+Este projeto consiste em uma plataforma de cadastro de empresas. A aplicação é composta por uma API back-end para cadastro de empresas e um front-end para interação com o usuário.
 Funcionalidades
 
 A API back-end possui as seguintes funcionalidades:
@@ -40,7 +40,7 @@ Acesse o diretório da API back-end:
 
 cd cadastrodeempresas/backend
 
-Crie um banco de dados MySQL com o nome "avaliacao_empresa" e configure as credenciais de acesso no arquivo config/database.js.
+Crie um banco de dados MySQL com o nome "database" e configure as credenciais de acesso no arquivo config/database.js.
 Instale as dependências da API back-end:
 
 npm install

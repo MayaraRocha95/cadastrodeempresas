@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { toast } from "react-toastify";
 
 function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
+  // Definindo estados para os campos do formulário
   const [nome, setNome] = useState("");
   const [rua, setRua] = useState("");
   const [numero, setNumero] = useState("");
@@ -10,6 +11,7 @@ function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
   const [cidade, setCidade] = useState("");
   const [estado, setEstado] = useState("");
 
+  // Atualizando os estados dos campos do formulário quando a prop "empresa" muda
   useEffect(() => {
     setNome(empresa.nome);
     setRua(empresa.rua);
@@ -19,7 +21,8 @@ function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
     setEstado(empresa.estado);
   }, [empresa]);
 
-  const handleSubmit = (event) => {
+  // Função para lidar com o envio do formulário de edição
+  const handleEdit = (event) => {
     event.preventDefault();
     const updatedEmpresa = {
       id: empresa.id,
@@ -30,6 +33,7 @@ function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
       cidade,
       estado,
     };
+    // Enviando uma requisição PUT para atualizar a empresa no servidor
     fetch(`http://localhost:4001/empresas/${empresa.id}`, {
       method: "PUT",
       headers: {
@@ -40,15 +44,25 @@ function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
     })
       .then((response) => response.json())
       .then((data) => {
+        // Exibindo uma notificação de sucesso e recarregando a página
         toast.success("Empresa atualizada com sucesso!");
         window.location.reload();
+      })
+      .catch((error) => {
+        // Exibindo uma notificação de erro
+        toast.error("Ocorreu um erro ao atualizar a empresa");
       });
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false}>
-      <h2>Editar empresa</h2>
-      <form onSubmit={handleSubmit}>
+    <Modal
+      className="modal"
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      ariaHideApp={false}
+    >
+      <h1>Editar empresa</h1>
+      <form onSubmit={handleEdit}>
         <div>
           <label htmlFor="nome">Nome:</label>
           <input
@@ -58,6 +72,9 @@ function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
             onChange={(event) => setNome(event.target.value)}
           />
         </div>
+        {/* Campos de entrada para os demais atributos da empresa */}
+        {/* Cada campo atualiza o estado correspondente ao ser alterado */}
+        {/* Exemplo: onChange={(event) => setRua(event.target.value)} */}
         <div>
           <label htmlFor="rua">Rua:</label>
           <input
@@ -76,15 +93,7 @@ function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
             onChange={(event) => setNumero(event.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="bairro">Bairro:</label>
-          <input
-            type="text"
-            id="bairro"
-            value={bairro}
-            onChange={(event) => setBairro(event.target.value)}
-          />
-        </div>
+
         <div>
           <label htmlFor="cidade">Cidade:</label>
           <input
@@ -103,8 +112,13 @@ function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
             onChange={(event) => setEstado(event.target.value)}
           />
         </div>
-        <button type="submit">Salvar</button>
-        <button onClick={onClose}>Cancelar</button>
+        {/* ... (outros campos) ... */}
+        <button className="botaoprimary" type="submit">
+          Salvar
+        </button>
+        <button className="botaosecundary" onClick={onClose}>
+          Cancelar
+        </button>
       </form>
     </Modal>
   );

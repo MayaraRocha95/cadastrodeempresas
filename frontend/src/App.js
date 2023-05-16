@@ -1,7 +1,8 @@
 import "./App.css";
-import ListaEmpresas from "./components/ListaEmpresas";
+import ListaEmpresas from "./pages/ListaEmpresas";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 function App() {
   return (

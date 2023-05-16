@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 
 function ModalFormulario({ isOpen, onClose, addEmpresa }) {
+  // Estado para armazenar os valores dos campos do formulário
   const [novaEmpresa, setNovaEmpresa] = useState({
     nome: "",
     rua: "",
@@ -11,6 +12,7 @@ function ModalFormulario({ isOpen, onClose, addEmpresa }) {
     estado: "",
   });
 
+  // Função para atualizar o estado dos campos do formulário
   const handleEmpresaChange = (event) => {
     const { name, value } = event.target;
     setNovaEmpresa((prevState) => ({
@@ -19,14 +21,20 @@ function ModalFormulario({ isOpen, onClose, addEmpresa }) {
     }));
   };
 
+  // Função para lidar com o envio do formulário
   const handleSubmit = (event) => {
     event.preventDefault();
     addEmpresa(novaEmpresa);
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false}>
-      <h2>Formulário de Cadastro</h2>
+    <Modal
+      className="modal"
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      ariaHideApp={false}
+    >
+      <h1>Cadastrar Empresa</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="nome">Nome:</label>
@@ -71,6 +79,7 @@ function ModalFormulario({ isOpen, onClose, addEmpresa }) {
             onChange={handleEmpresaChange}
           />
         </div>
+
         <div>
           <label htmlFor="cidade">Cidade:</label>
           <input
@@ -93,8 +102,12 @@ function ModalFormulario({ isOpen, onClose, addEmpresa }) {
           />
         </div>
 
-        <button type="submit">Cadastrar</button>
-        <button onClick={onClose}>Cancelar</button>
+        <button className="botaoprimary" type="submit">
+          Cadastrar
+        </button>
+        <button className="botaosecundary" onClick={onClose}>
+          Cancelar
+        </button>
       </form>
     </Modal>
   );
