@@ -41,6 +41,7 @@ function ModalEditar({ isOpen, empresa, onClose, onUpdate }) {
       .then((response) => response.json())
       .then((data) => {
         toast.success("Empresa atualizada com sucesso!");
+        window.location.reload();
       });
   };
 

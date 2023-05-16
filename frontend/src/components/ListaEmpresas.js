@@ -4,6 +4,7 @@ import ModalDetalhes from "./ModalDetalhes";
 import ModalEditar from "./ModalEditar";
 import ModalExcluir from "./ModalExcluir";
 import ModalCadastro from "./ModalCadastro";
+import logo from "../assets/logo.png";
 
 function ListaEmpresas() {
   const [empresas, setEmpresas] = useState([]);
@@ -52,18 +53,26 @@ function ListaEmpresas() {
       .then((data) => {
         setIsCadastroOpen(false);
         toast.success("Empresa cadastrada com sucesso!");
+        window.location.reload();
       });
   };
 
   return (
     <>
-      <button
-        onClick={() => {
-          setIsCadastroOpen(true);
-        }}
-      >
-        Cadastrar nova empresa
-      </button>
+      <div className="navbar">
+        <img className="logo" src={logo} alt="" />
+
+        <div className="adicionar-empresa-button ">
+          <button
+            onClick={() => {
+              setIsCadastroOpen(true);
+            }}
+          >
+            Cadastrar nova empresa
+          </button>
+        </div>
+      </div>
+
       <h1>Lista de empresas</h1>
       <table>
         <thead>
