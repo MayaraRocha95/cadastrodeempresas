@@ -6,8 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div className="App">
-      <ListaEmpresas />
-      <ToastContainer />
+      <header className="App-header">
+        <ListaEmpresas />
+        <ToastContainer />
+      </header>
     </div>
   );
 }
