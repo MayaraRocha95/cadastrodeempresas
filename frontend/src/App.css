@@ -11,6 +11,12 @@ table {
   border-collapse: collapse;
 }
 
+h1 {
+  text-align: center;
+  color: #112e5c;
+  font-size: large;
+}
+
 th,
 td {
   padding: 8px;
@@ -24,7 +30,8 @@ th {
 }
 
 .logo {
-  width: 500px;
+  height: 40px;
+  margin: auto;
 }
 
 .navbar {

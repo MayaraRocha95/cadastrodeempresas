@@ -60,7 +60,7 @@ function ListaEmpresas() {
   return (
     <>
       <div className="navbar">
-        <img className="logo" src={logo} alt="" />
+        <img className="logo" src={logo} alt="logotipo" />
 
         <div className="adicionar-empresa-button ">
           <button
@@ -73,7 +73,7 @@ function ListaEmpresas() {
         </div>
       </div>
 
-      <h1>Lista de empresas</h1>
+      <h1>Lista de Empresas</h1>
       <table>
         <thead>
           <tr>
