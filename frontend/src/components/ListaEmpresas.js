@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import ModalDetalhes from "./ModalDetalhes";
 import ModalEditar from "./ModalEditar";
+import ModalExcluir from "./ModalExcluir";
 
 function ListaEmpresas() {
   const [empresas, setEmpresas] = useState([]);
   const [isDetalsOpen, setIsDetalsOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [empresa, setEmpresa] = useState({});
 
   useEffect(() => {
@@ -23,6 +26,20 @@ function ListaEmpresas() {
       .then((response) => response.json())
       .then((data) => setEmpresas(data));
   }, []);
+
+  const deleteEmpresa = (id) => {
+    fetch(`http://localhost:4001/empresas/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        toast.success("Empresa excluída com sucesso!");
+      });
+  };
 
   return (
     <table>
@@ -57,7 +74,14 @@ function ListaEmpresas() {
               >
                 Editar
               </button>
-              <button>Excluir</button>
+              <button
+                onClick={() => {
+                  setEmpresa(empresa);
+                  setIsDeleteOpen(true);
+                }}
+              >
+                Excluir
+              </button>
             </td>
           </tr>
         ))}
@@ -76,6 +100,18 @@ function ListaEmpresas() {
             empresa={empresa}
             onClose={() => {
               setIsEditOpen(false);
+            }}
+          />
+          <ModalExcluir
+            isOpen={isDeleteOpen}
+            empresa={empresa}
+            onConfirm={() => {
+              setIsDeleteOpen(false);
+              deleteEmpresa(empresa.id);
+            }}
+            onCancel={() => {
+              setIsDeleteOpen(false);
+              setEmpresa({});
             }}
           />
         </>
