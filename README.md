@@ -1,60 +1,96 @@
-Plataforma de Cadastro de Empresas
+# Plataforma de Cadastro de Empresas
 
 Este projeto consiste em uma plataforma de cadastro de empresas. A aplicação é composta por uma API back-end para cadastro de empresas e um front-end para interação com o usuário.
-Funcionalidades
+
+## Funcionalidades
 
 A API back-end possui as seguintes funcionalidades:
 
-    Listagem de todas as empresas cadastradas;
-    Detalhamento dos dados de uma empresa pelo ID;
-    Cadastro de uma nova empresa;
-    Atualização dos dados de uma empresa através do ID;
-    Exclusão de uma empresa através do ID.
+- Listagem de todas as empresas cadastradas;
+- Detalhamento dos dados de uma empresa pelo ID;
+- Cadastro de uma nova empresa;
+- Atualização dos dados de uma empresa através do ID;
+- Exclusão de uma empresa através do ID.
 
 O front-end permite ao usuário:
 
-    Visualizar a lista de empresas cadastradas em uma tabela com as informações de ID, nome e endereço;
-    Visualizar mais detalhes de uma empresa ao clicar no botão "mais detalhes";
-    Editar as informações de uma empresa ao clicar no botão "editar";
-    Excluir uma empresa ao clicar no botão "apagar";
-    Adicionar uma nova empresa no sistema ao clicar no botão "adicionar empresa".
+- Visualizar a lista de empresas cadastradas em uma tabela com as informações de ID, nome e endereço;
+- Visualizar mais detalhes de uma empresa ao clicar no botão "mais detalhes";
+- Editar as informações de uma empresa ao clicar no botão "editar";
+- Excluir uma empresa ao clicar no botão "apagar";
+- Adicionar uma nova empresa no sistema ao clicar no botão "adicionar empresa".
 
-Tecnologias utilizadas
 
-A aplicação utiliza as seguintes tecnologias:
+### Tecnologias utilizadas no Back-end:
+- Node.js
+- Express
+- MySQL
+- Sequelize
+- SQLite3
 
-    Back-end: Node.js, Express e MySQL;
-    Front-end: React, HTML, CSS e JavaScript.
 
-Como rodar a aplicação
+### Tecnologias utilizadas no Front-end:
+- React
+- React Modal
+- React Toastify
+- FontAwesome (fontes e ícones)
+- Testing Library (Jest DOM, React, User Event)
+- Web Vitals
+## Como rodar a aplicação
 
 Para rodar a aplicação, é necessário ter o Node.js e o MySQL instalados na máquina.
 
-    Clone o repositório do projeto:
-
-    bash
+1. Clone o repositório do projeto:
 
 git clone https://github.com/mayararocha95/cadastrodeempresas.git
 
-Acesse o diretório da API back-end:
 
-cd cadastrodeempresas/backend
+2. Acesse o diretório da API back-end:
 
-Crie um banco de dados MySQL com o nome "database" e configure as credenciais de acesso no arquivo config/database.js.
-Instale as dependências da API back-end:
+`cd cadastrodeempresas/backend`
 
-npm install
 
-Inicie a API back-end:
+3. Crie um banco de dados MySQL com o nome "database" e configure as credenciais de acesso no arquivo `config/database.js`.
 
-npm start
+4. Instale as dependências da API back-end:
 
-Acesse o diretório do front-end:
+` npm install`
 
-bash
+5. Inicie a API back-end:
 
-    cd ../frontend
+` npm start`
 
-    Configure a URL da API back-end no arquivo js/config.js.
-    Abra o arquivo index.html em um navegador para acessar a plataforma.
+6. Acesse o diretório do front-end:
 
+` cd ../frontend`
+
+7. Instale as dependências do front-end:
+
+` npm install`
+
+8. Inicie front-end:
+
+` npm start`
+
+## Imagens
+
+A seguir estão algumas imagens da plataforma:
+
+# 1. Página Principal:
+
+   ![Página Principal](./frontend/assets/paginaprincipal.png)
+
+# 2. Modal Detalhes:
+
+   ![Modal Detalhes](./frontend/assets/modaldetalhes.png)
+
+# 3. Modal Excluir:
+
+   ![Modal Excluir](./frontend/assets/modalexcluir.png)
+
+# 4. Modal Cadastrar Empresas:
+
+   ![Modal Cadastrar Empresas](./frontend/assets/modalcadastro.png)
+
+
+>Criado por Mayara Rocha
