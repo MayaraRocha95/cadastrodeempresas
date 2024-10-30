@@ -1,5 +1,6 @@
 # Plataforma de Cadastro de Empresas
 
+
 Este projeto consiste em uma plataforma de cadastro de empresas. A aplicação é composta por uma API back-end para cadastro de empresas e um front-end para interação com o usuário.
 
 ## Funcionalidades
